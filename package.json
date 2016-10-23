@@ -1,0 +1,12 @@
+{
+  "name": "serfid-u-backend",
+  "version": "1.0.0",
+  "description": "server side app for serfid user module",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/nicoandresr/serfid-u-backend.git",
+    "type": "git"
+  },
+  "author": "nicoandresr <nicoandres.rodriguez@gmail.com>",
+  "license": "MIT"
+}
