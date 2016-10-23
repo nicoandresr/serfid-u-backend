@@ -1,11 +1,21 @@
 import * as express from "express";
+import * as assert from "assert";
+import * as mongodb from "mongodb";
 
 module Serfid {
     export class Server {
-        private _consoleLogStartMsg: string = "App listening on port: ";
+        static consoleLogStartMsg: string = "App listening on port: ";
+        private _app: express.Application;
+        private _uriMongo: string = "mongodb://nico:'S3rf1d'@ds061246.mlab.com:61246/serfid-db";
 
         constructor(port: number){
-            console.log(this._consoleLogStartMsg + port);
+                this._app = express();
+                this.configureExpressServer(port);
+        }
+
+        private configureExpressServer(port: number):void {
+                this._app.get("/", (req, res) => { res.send("hola mundo") });
+                this._app.listen(port, () => { console.log(Server.consoleLogStartMsg + port) });
         }
     }
 }
