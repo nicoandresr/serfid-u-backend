@@ -8,5 +8,12 @@
     "type": "git"
   },
   "author": "nicoandresr <nicoandres.rodriguez@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.0.3"
+  }
 }

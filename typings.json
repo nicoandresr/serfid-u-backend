@@ -1,4 +1,10 @@
 {
   "name": "serfid-u-backend",
-  "dependencies": {}
+  "dependencies": {
+    "express": "registry:npm/express#4.14.0+20160925001530"
+  },
+  "globalDependencies": {
+    "assert": "registry:dt/assert#0.0.0+20160317120654",
+    "node": "registry:dt/node#6.0.0+20161019125345"
+  }
 }
