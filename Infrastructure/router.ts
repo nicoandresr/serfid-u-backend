@@ -14,7 +14,7 @@ export class Router {
             let devices: string;
             devices = JSON.stringify(docs);
 
-            router.get("/", (req, res) => {
+            router.get("/devices", (req, res) => {
                 res.send(devices);
             });
         });

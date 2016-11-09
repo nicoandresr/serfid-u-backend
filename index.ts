@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as assert from "assert";
 import * as mongodb from "mongodb";
+import * as cors from "cors";
 import { Router } from "./Infrastructure/router";
 
 export class SerfidServer {
@@ -16,7 +17,14 @@ export class SerfidServer {
         this._startMsg += port;
         this._app = express();
 
+        this.enableCors();
         this.startSerfidServer();
+    }
+
+    private enableCors(): void {
+        let options = { 
+            origin: "http://localhost:3000" };
+        this._app.use(cors(options));
     }
 
     private startSerfidServer(): void {
