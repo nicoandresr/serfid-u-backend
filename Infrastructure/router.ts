@@ -15,13 +15,12 @@ export class Router {
     }
 
     private configGetDevicesRoute(router: express.Router): void {
-        this._db.collection("devices").find().toArray((error, docs) => {
-            assert.equal(null, error);
+        router.get("/devices", (req, res) => {
+            this._db.collection("devices").find().toArray((error, docs) => {
+                assert.equal(null, error);
 
-            let devices: string;
-            devices = JSON.stringify(docs);
-
-            router.get("/devices", (req, res) => {
+                let devices: string;
+                devices = JSON.stringify(docs);
                 res.send(devices);
             });
         });
@@ -29,8 +28,14 @@ export class Router {
 
     private configRegisterDeviceRoute(router: express.Router): void {
         router.post("/deviceRegister", (req, res) => {
-            console.log(req.body);
-            res.send("ok");
+            let data = req.body;
+            data.registerDate = new Date();
+            this._db.collection("devices").insertOne(data, (err, result) => {
+                assert.equal(null, err);
+                assert.equal(1, result.insertedCount);
+
+                res.send("ok");
+            });
         });
     }
 }
