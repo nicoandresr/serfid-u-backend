@@ -2,6 +2,7 @@ import * as express from "express";
 import * as assert from "assert";
 import * as mongodb from "mongodb";
 import * as cors from "cors";
+import * as bodyParser from "body-parser";
 import { Router } from "./Infrastructure/router";
 
 export class SerfidServer {
@@ -38,6 +39,10 @@ export class SerfidServer {
 
 
     private configureExpressServer(): void {
+        
+        let jsonParser = bodyParser.json();
+
+        this._app.use(jsonParser);
         this._app.use("/", this._router);
         this._app.listen(this._port, () => { console.log(this._startMsg) });
     }
