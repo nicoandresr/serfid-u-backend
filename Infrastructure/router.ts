@@ -30,7 +30,7 @@ export class Router {
     private configRegisterDeviceRoute(router: express.Router): void {
         router.post("/deviceRegister", (req, res) => {
             let data = req.body;
-            data.registerDate = new Date();
+            data.registerDate = Date.now();
             this._db.collection("devices").insertOne(data, (err, result) => {
                 assert.equal(null, err);
                 assert.equal(1, result.insertedCount);
