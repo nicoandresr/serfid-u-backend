@@ -21,6 +21,7 @@ export class Router {
 
                 let devices: string;
                 devices = JSON.stringify(docs);
+
                 res.send(devices);
             });
         });
