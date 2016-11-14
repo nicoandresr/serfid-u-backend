@@ -39,4 +39,17 @@ export class Router {
             });
         });
     }
+
+    private configDeleteDeviceRoute(router: express.Router): void {
+        router.delete("/deviceDelete/:deviceId", (req, res) => {
+            let id: string = req.params.deviceId;
+            let query: string = "{_id:ObjectId('" + id + "')}";
+            this._db.collection("devices").deleteOne(query, (err, result) => {
+                assert.equal(null, err);
+                assert.equal(1, result.deletedCount);
+
+                res.send("ok");
+            });
+        });
+    }
 }
