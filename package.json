@@ -9,7 +9,8 @@
   },
   "author": "nicoandresr <nicoandres.rodriguez@gmail.com>",
   "scripts": {
-    "start": "node index.js"
+    "start": "npm run tsc && node index.js",
+    "tsc": "tsc index.ts"
   },
   "license": "MIT",
   "dependencies": {

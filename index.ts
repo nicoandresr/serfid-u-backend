@@ -48,4 +48,4 @@ export class SerfidServer {
     }
 }
 
-new SerfidServer(7000);
+new SerfidServer(process.env.PORT || 7000);
