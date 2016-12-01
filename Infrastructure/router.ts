@@ -9,7 +9,7 @@ export class Router {
         let router = express.Router();
 
         this.configGetDevicesRoute(router);
-        this.configRegisterDeviceRoute(router);
+        this.configGetReadingsRoute(router);
 
         return router;
     }
@@ -49,6 +49,18 @@ export class Router {
                 assert.equal(1, result.deletedCount);
 
                 res.send("ok");
+            });
+        });
+    }
+
+    private configGetReadingsRoute(router: express.Router): void {
+        router.get("/readings", (req, res) => {
+            this._db.collection("readings").find().toArray((err, docs) => {
+                assert.equal(null, err);
+
+                let readings: string;
+                readings = JSON.stringify(docs);
+                res.send(readings);
             });
         });
     }
