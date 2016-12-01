@@ -55,12 +55,24 @@ export class Router {
 
     private configGetReadingsRoute(router: express.Router): void {
         router.get("/readings", (req, res) => {
-            this._db.collection("readings").find().toArray((err, docs) => {
-                assert.equal(null, err);
+            this._db.collection("devices").find().toArray((e, devs) => {
+                assert.equal(null, e);
+               this._db.collection("readings").find().toArray((err, docs) => {
+                    assert.equal(null, err);
 
-                let readings: string;
-                readings = JSON.stringify(docs);
-                res.send(readings);
+                    docs.forEach(read => {
+                        devs.forEach(doc => {
+                            if (doc.tag === read.tag) {
+                                read.device = doc.device;
+                                read.imageUrl = doc.imageUrl;
+                            }
+                        });
+                    });
+
+                    let readings: string;
+                    readings = JSON.stringify(docs);
+                    res.send(readings);
+                }); 
             });
         });
     }

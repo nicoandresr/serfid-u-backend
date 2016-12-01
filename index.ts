@@ -8,7 +8,7 @@ import { Router } from "./Infrastructure/router";
 export class SerfidServer {
 
     private _startMsg: string = "App listening on port: ";
-    private _uriMongo: string = "mongodb://nico:'S3rf1d'@ds061246.mlab.com:61246/serfid-db";
+    private _uriMongo: string = "mongodb://localhost:27017/serfid-db";
     private _app: express.Application;
     private _port: number;
     private _router: express.Router;
